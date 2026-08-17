@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UKW Engineering Solutions | Elevating Standards in Ghana</title>
+    <meta name="description"
+        content="Ghana's premier vertical transportation experts. Lift sourcing, installation, repair, maintenance, and GSA compliance consultation.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* =========================================
+           UKW ENGINEERING BRAND VARIABLES
+           ========================================= */
+        :root {
+            --navy: #0B1B3D;
+            --navy-light: #152A55;
+            --grey: #64748B;
+            --light-grey: #F8FAFC;
+            --orange: #FF6B00;
+            --orange-hover: #E65C00;
+            --white: #FFFFFF;
+            --shadow: 0 10px 25px -5px rgba(11, 27, 61, 0.1), 0 8px 10px -6px rgba(11, 27, 61, 0.1);
+
+            /* LIGHT THEME SURFACES */
+            --bg-body: #FFFFFF;
+            --bg-section: #F8FAFC;
+            --bg-card: #FFFFFF;
+            --text-body: #64748B;
+            --text-heading: #0B1B3D;
+            --header-bg: #FFFFFF;
+            --border: #E2E8F0;
+
+            /* LOGO COLORS (adapts to theme) */
+            --logo-primary: #0B1B3D;
+            --logo-secondary: #64748B;
+
+            color-scheme: light;
+        }
+
+        /* =========================================
+           DARK THEME OVERRIDES
+           ========================================= */
+        [data-theme="dark"] {
+            --bg-body: #0B1220;
+            --bg-section: #0F172A;
+            --bg-card: #16233C;
+            --text-body: #94A3B8;
+            --text-heading: #F1F5F9;
+            --header-bg: #0B1220;
+            --border: #24324D;
+            --logo-primary: #F1F5F9;
+            --logo-secondary: #94A3B8;
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.5);
+
+            color-scheme: dark;
+        }
+
+        /* =========================================
+           GLOBAL RESET & TYPOGRAPHY
+           ========================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            color: var(--text-body);
+            line-height: 1.6;
+            background-color: var(--bg-body);
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            color: var(--text-heading);
+            line-height: 1.2;
+            font-weight: 800;
+            transition: color 0.3s ease;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* =========================================
+           BUTTONS
+           ========================================= */
+        .btn {
+            display: inline-block;
+            padding: 14px 28px;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--orange);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--orange-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(255, 107, 0, 0.3);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--white);
+            color: var(--navy);
+        }
+
+        /* =========================================
+           HEADER & NAVIGATION
+           ========================================= */
+        header {
+            background-color: var(--header-bg);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        /* YOUR ORIGINAL UKW ARROW LOGO (recreated as inline SVG) */
+        .logo-svg {
+            height: 62px;
+            width: auto;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-heading);
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--orange);
+        }
+
+        /* Dark / Light mode toggle button */
+        .theme-toggle {
+            background: transparent;
+            border: 2px solid var(--border);
+            color: var(--text-heading);
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .theme-toggle:hover {
+            border-color: var(--orange);
+            color: var(--orange);
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: var(--text-heading);
+        }
+
+        /* =========================================
+           HERO SECTION
+           ========================================= */
+        .hero {
+            background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+            color: var(--white);
+            padding: 170px 0 100px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: url('https://images.unsplash.com/photo-1486325212027-8081e485255e?auto=format&fit=crop&q=80&w=1920') center/cover;
+            opacity: 0.08;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+
+        .hero h1 .highlight {
+            color: var(--orange);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: #cbd5e1;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .trust-bar {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            gap: 30px;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+
+        .trust-bar i {
+            color: var(--orange);
+            margin-right: 8px;
+        }
+
+        /* =========================================
+           SECTIONS
+           ========================================= */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-header .subtitle {
+            color: var(--orange);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+        }
+
+        .bg-light {
+            background-color: var(--bg-section);
+            transition: background-color 0.3s ease;
+        }
+
+        /* Services Grid */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--bg-card);
+            padding: 40px 30px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+            border-bottom: 4px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-bottom: 4px solid var(--orange);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(255, 107, 0, 0.1);
+            color: var(--orange);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+
+        /* Compliance Section */
+        .compliance-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .compliance-image {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 400px;
+            background: linear-gradient(45deg, var(--navy), var(--grey));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 4rem;
+        }
+
+        .compliance-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .compliance-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .compliance-list i {
+            color: var(--orange);
+            font-size: 1.2rem;
+            margin-top: 4px;
+        }
+
+        /* About Section */
+        .about-wrapper {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .founder-card {
+            margin-top: 40px;
+            background: var(--bg-card);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            display: inline-flex;
+            align-items: center;
+            gap: 20px;
+            text-align: left;
+            transition: background-color 0.3s ease;
+        }
+
+        .founder-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background-color: var(--navy);
+            color: var(--orange);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            font-weight: 800;
+            flex-shrink: 0;
+        }
+
+        /* =========================================
+           CONTACT SECTION
+           ========================================= */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .contact-info-card {
+            background: var(--navy);
+            color: var(--white);
+            padding: 50px;
+            border-radius: 12px;
+        }
+
+        .contact-info-card h3 {
+            color: var(--white);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .contact-item i {
+            color: var(--orange);
+            font-size: 1.2rem;
+            margin-top: 4px;
+        }
+
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid var(--border);
+            border-radius: 8px;
+            font-size: 1rem;
+            background-color: var(--bg-card);
+            color: var(--text-heading);
+            transition: border-color 0.3s ease, background-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--orange);
+        }
+
+        /* =========================================
+           FOOTER (always dark, so logo stays light)
+           ========================================= */
+        footer {
+            --logo-primary: #F1F5F9;
+            --logo-secondary: #94A3B8;
+            background-color: #061025;
+            color: #94a3b8;
+            padding: 40px 0;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        footer .logo {
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        footer .logo-svg {
+            height: 80px;
+        }
+
+        /* =========================================
+           RESPONSIVE DESIGN (MOBILE)
+           ========================================= */
+        @media (max-width: 900px) {
+
+            .compliance-wrapper,
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: var(--header-bg);
+                flex-direction: column;
+                padding: 30px;
+                box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+                transform: translateY(-150%);
+                transition: transform 0.3s ease;
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                transform: translateY(0);
+            }
+
+            .hamburger {
+                display: block;
+            }
+
+            .hero {
+                padding: 130px 0 80px;
+            }
+
+            .trust-bar {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================================
+         THE ORIGINAL UKW LOGO (inline SVG symbol)
+         Recreated from your chosen letterhead design:
+         navy upward arrow, grey echo arrow, orange accent.
+         It auto-adapts to light/dark theme via CSS variables.
+         ========================================= -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+        <symbol id="ukw-logo" viewBox="0 0 260 168">
+            <!-- Upward arrow mark -->
+            <path d="M130 2 L196 68 L172 68 L130 26 L88 68 L64 68 Z" fill="var(--logo-primary)" />
+            <path d="M116 52 L130 38 L144 52 L144 104 L116 104 Z" fill="var(--logo-primary)" />
+            <!-- Grey echo arrows -->
+            <path d="M140 46 L174 80 L158 80 L140 62 Z" fill="var(--logo-secondary)" />
+            <path d="M92 78 L108 78 L92 94 Z" fill="var(--logo-secondary)" />
+            <path d="M152 78 L168 78 L152 94 Z" fill="var(--logo-secondary)" />
+            <!-- Orange accent -->
+            <path d="M146 88 L164 88 L155 104 Z" fill="var(--orange)" />
+            <!-- Wordmark -->
+            <text x="130" y="146" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-weight="800"
+                font-size="56" letter-spacing="4" fill="var(--logo-primary)">UKW</text>
+            <text x="130" y="164" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-weight="600"
+                font-size="12" letter-spacing="4" fill="var(--logo-primary)">ENGINEERING SOLUTIONS</text>
+        </symbol>
+    </svg>
+
+    <!-- =========================================
+         HEADER & NAVIGATION
+         ========================================= -->
+    <header>
+        <div class="nav-container">
+            <a href="#home" class="logo" aria-label="UKW Engineering Solutions - Home">
+                <svg class="logo-svg">
+                    <use href="#ukw-logo"></use>
+                </svg>
+            </a>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#compliance">Compliance</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#contact" class="btn btn-primary">Request Audit</a></li>
+            </ul>
+
+            <div style="display:flex; align-items:center; gap:12px;">
+                <!-- DARK / LIGHT MODE TOGGLE -->
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+                    <i class="fas fa-moon" id="themeIcon"></i>
+                </button>
+                <div class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- =========================================
+         HERO SECTION
+         ========================================= -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <h1>Elevating Standards.<br><span class="highlight">Engineering Trust.</span></h1>
+            <p>Ghana's premier vertical transportation experts. From precision sourcing and installation to 24/7
+                maintenance and GSA compliance audits.</p>
+            <div class="hero-buttons">
+                <a href="#contact" class="btn btn-primary">Get a Maintenance Quote</a>
+                <a href="#services" class="btn btn-outline">Explore Services</a>
+            </div>
+
+            <div class="trust-bar">
+                <div><i class="fas fa-check-circle"></i> Compliant with Ghana Building Code (GBC 2018)</div>
+                <div><i class="fas fa-check-circle"></i> GSA Certified Standards</div>
+                <div><i class="fas fa-check-circle"></i> GhIE Aligned Engineering</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================
+         SERVICES SECTION
+         ========================================= -->
+    <section id="services" class="bg-light">
+        <div class="container">
+            <div class="section-header">
+                <div class="subtitle">What We Do</div>
+                <h2>Comprehensive Lift Solutions</h2>
+                <p>End-to-end vertical transportation services tailored for Ghana's growing real estate and commercial
+                    sectors.</p>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-search-location"></i></div>
+                    <h3>Lift Sourcing</h3>
+                    <p>We leverage global networks to procure high-quality, cost-effective elevator systems that
+                        perfectly match your building's specifications and budget.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-tools"></i></div>
+                    <h3>Installation</h3>
+                    <p>Precision installation by certified technicians. We ensure your lift is integrated seamlessly
+                        into your building's structural and electrical framework.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-wrench"></i></div>
+                    <h3>Repair & Emergency</h3>
+                    <p>Fast, reliable troubleshooting and repair services to minimize downtime and ensure the safety and
+                        convenience of your tenants.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-clipboard-check"></i></div>
+                    <h3>Preventative Maintenance</h3>
+                    <p>Scheduled servicing plans designed to extend the lifespan of your equipment, prevent breakdowns,
+                        and ensure smooth daily operations.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-hard-hat"></i></div>
+                    <h3>Consultation & Audits</h3>
+                    <p>Expert advice on lift modernization, safety audits, and ensuring your existing or planned systems
+                        meet all GSA regulatory requirements.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================
+         COMPLIANCE & SAFETY SECTION
+         ========================================= -->
+    <section id="compliance">
+        <div class="container">
+            <div class="compliance-wrapper">
+                <div class="compliance-image">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <div>
+                    <div class="subtitle"
+                        style="color: var(--orange); font-weight: 600; text-transform: uppercase; margin-bottom: 10px;">
+                        Safety First</div>
+                    <h2>Uncompromising Compliance & Safety</h2>
+                    <p>Operating a lift in Ghana requires strict adherence to national safety standards. At UKW
+                        Engineering Solutions, we don't just install elevators; we ensure they are legally compliant and
+                        safe for human life.</p>
+
+                    <ul class="compliance-list">
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h3>Ghana Standards Authority (GSA)</h3>
+                                <p>We facilitate GSA inspections and ensure your lifts meet the strict requirements of
+                                    the Weights and Measures Decree.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h3>Ghana Building Code (GBC 2018)</h3>
+                                <p>All installations and modernizations are executed in strict accordance with
+                                    GS-1207:2018 standards.</p>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-check-circle"></i>
+                            <div>
+                                <h3>Liability Protection</h3>
+                                <p>Our documented maintenance logs protect property owners and facility managers from
+                                    legal and insurance liabilities.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================
+         ABOUT US SECTION
+         ========================================= -->
+    <section id="about" class="bg-light">
+        <div class="container about-wrapper">
+            <div class="subtitle">About UKW</div>
+            <h2>Engineering Excellence in Vertical Mobility</h2>
+            <p>UKW Engineering Solutions was founded on a simple principle: Ghana's rapidly growing skyline deserves
+                world-class, safe, and reliable vertical transportation. We bridge the gap between international
+                engineering standards and local execution.</p>
+            <p>Whether you are a real estate developer sourcing your first commercial lift, or a facility manager
+                needing emergency repairs, we bring technical precision and unwavering integrity to every job site.</p>
+
+            <div class="founder-card">
+                <div class="founder-avatar">UKW</div>
+                <div>
+                    <h3 style="margin-bottom: 0;">Umbornyi Kwesi Wujangi</h3>
+                    <p style="margin-bottom: 0; color: var(--orange); font-weight: 600;">Chief Technical Officer / MD
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================
+         CONTACT SECTION
+         ========================================= -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-header">
+                <div class="subtitle">Get In Touch</div>
+                <h2>Ready to Elevate Your Building?</h2>
+                <p>Contact us today for a site consultation, maintenance quote, or compliance audit.</p>
+            </div>
+
+            <div class="contact-wrapper">
+                <div class="contact-info-card">
+                    <h3>Let's Talk Engineering</h3>
+                    <p>Reach out to our technical team directly. We respond to all inquiries within 24 hours.</p>
+
+                    <div class="contact-item">
+                        <i class="fas fa-phone-alt"></i>
+                        <div>
+                            <strong>Phone / WhatsApp</strong><br>
+                            <!-- UPDATE PHONE NUMBER IF NEEDED -->
+                            +233 (0) 557 020 185
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <strong>Email</strong><br>
+                            <!-- REPLACE WITH PROFESSIONAL DOMAIN EMAIL LATER (e.g., info@ukwengineering.com) -->
+                            umbornyi26@gmail.com
+                        </div>
+                    </div>
+
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <strong>Location</strong><br>
+                            Accra, Ghana
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Subject (e.g., Lift Maintenance Quote)">
+                    </div>
+                    <div class="form-group">
+                        <textarea rows="5" placeholder="Tell us about your building and requirements..."
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- =========================================
+         FOOTER
+         ========================================= -->
+    <footer>
+        <div class="container">
+            <div class="logo">
+                <svg class="logo-svg">
+                    <use href="#ukw-logo"></use>
+                </svg>
+            </div>
+            <p>&copy; 2026 UKW Engineering Solutions. All Rights Reserved.</p>
+            <p style="margin-top: 10px; font-size: 0.8rem;">Elevating Standards. Engineering Trust.</p>
+        </div>
+    </footer>
+    <script type="module" src="./src/index.js"></script>
+
+</body>
+
+</html>
