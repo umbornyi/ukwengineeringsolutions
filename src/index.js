@@ -60,13 +60,16 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 });
 
 // =========================================
-// 5. CONTACT FORM (Demo handler)
+// 5. CONTACT FORM (Real Handler)
 // =========================================
 const contactForm = document.getElementById('contactForm');
-contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    alert('Thank you for contacting UKW Engineering Solutions! We will review your inquiry and get back to you within 24 hours.');
-    contactForm.reset();
+
+// This script safely lets the form send data to your email, then resets the text boxes!
+contactForm.addEventListener('submit', () => {
+    alert('Thank you for contacting UKW Engineering Solutions! Your inquiry has been sent. We will review it and get back to you within 24 hours.');
+    
+    // A tiny half-second delay to let the data leave the website before clearing the screen inputs
+    setTimeout(() => { contactForm.reset(); }, 500);
 });
 
 // =========================================
