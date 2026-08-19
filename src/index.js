@@ -1,11 +1,3 @@
-// 1. First, import your Firebase setup (Notice the .js at the end!)
-import app from './firebase.js';
-
-// 2. These logs will run only if the import above is completely successful
-alert("JavaScript and Firebase are working!");
-console.log("Firebase is connected and ready!", app);
-
-
 // =========================================
 // 3. DARK / LIGHT MODE TOGGLE (saves preference)
 // =========================================
